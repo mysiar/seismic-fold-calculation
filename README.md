@@ -1,1 +1,1 @@
-# seismic-fold-calculation
+# Seismic fold calculation - cli scripts
