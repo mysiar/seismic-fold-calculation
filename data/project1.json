@@ -1,0 +1,5 @@
+{
+  "db_url": "postgresql://test:test@postgis.lxd/sfc_test",
+  "grid": "grid-1.json"
+
+}

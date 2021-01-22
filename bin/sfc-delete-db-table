@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+
+import sys
+
+from sfc_app import usage, read_project_file, delete_db_table
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        usage('project_file')
+        exit(0)
+    prj = read_project_file(sys.argv[1])
+    delete_db_table(prj['db_url'])
