@@ -40,6 +40,9 @@
 * TODO
 
 
+### Tests
+* to run `tests/test.sh` you need to create spatial SQLite db using `spatialite tests/data/fold.sqlite`
+
 ## More info
 
 * [Seismic Fold](https://github.com/mysiar/seismic-fold-python-package)

@@ -1,5 +1,5 @@
 {
-  "db_url": "postgresql://test:test@postgis.lxd/sfc_test",
+  "db_url": "sqlite:///tests/data/fold.sqlite",
   "grid_file": "grid-1.json",
   "sps_file": "",
   "rps_file": "",

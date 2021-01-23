@@ -3,3 +3,4 @@ SeismicFoldDbGis>=0.0.4
 SQLAlchemy>=1.3.22
 GeoAlchemy2>=0.8.4
 FixedWidthTextParser>=0.3.4
+psycopg2-binary==2.8.6
