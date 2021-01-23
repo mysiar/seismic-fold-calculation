@@ -1,6 +1,7 @@
 import unittest
-from bin.sfc_app import _create_db_engine
+from bin.sfc_app import _create_db_engine, timer
 from sqlalchemy.engine.base import Engine
+import time
 
 
 class SfcAppTestCase(unittest.TestCase):
@@ -13,6 +14,12 @@ class SfcAppTestCase(unittest.TestCase):
 
         engine = _create_db_engine("sqlite:///tests/data/fold.other", False)
         self.assertIsInstance(engine, Engine)
+
+    def test_timer(self):
+        start = time.time()
+        end = time.time() + 62368
+        result = timer(start, end)
+        self.assertEqual('17:19:28.00', result)
 
 
 if __name__ == '__main__':

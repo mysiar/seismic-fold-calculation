@@ -93,3 +93,9 @@ def _create_db_engine(db_url: str, db_verbose: bool):
 def _load_spatialite(dbapi_conn, connection_record):
     dbapi_conn.enable_load_extension(True)
     dbapi_conn.load_extension(SPATIALITE_EXT)
+
+
+def timer(start, end):
+    hours, rem = divmod(end - start, 3600)
+    minutes, seconds = divmod(rem, 60)
+    return "{:0>2}:{:0>2}:{:05.2f}".format(int(hours), int(minutes), seconds)

@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
 import sys
-
-from sfc_app import usage, fold_db_update
+import time
+from sfc_app import usage, fold_db_update, timer
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         usage('project_file fold_csv_file')
         exit(0)
+    start = time.time()
     fold_db_update(sys.argv[1], sys.argv[2])
+    print(timer(start, time.time()))
