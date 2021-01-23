@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+import sys
+
+from sfc_app import usage, fold_db_load
+
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        usage('project_file fold_csv_file')
+        exit(0)
+    fold_db_load(sys.argv[1], sys.argv[2])

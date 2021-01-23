@@ -2,10 +2,10 @@
 
 import sys
 
-from sfc_app import usage, create_db_table
+from sfc_app import usage, db_table_delete
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         usage('project_file')
         exit(0)
-    create_db_table(sys.argv[1])
+    db_table_delete(sys.argv[1])

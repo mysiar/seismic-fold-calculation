@@ -2,10 +2,10 @@
 
 import sys
 
-from sfc_app import usage, calculate_fold
+from sfc_app import usage, fold_calculate
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
         usage('project_file output_fold_csv_file')
         exit(0)
-    calculate_fold(sys.argv[1], sys.argv[2])
+    fold_calculate(sys.argv[1], sys.argv[2])
