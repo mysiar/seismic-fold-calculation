@@ -1,5 +1,8 @@
 {
   "db_url": "postgresql://test:test@postgis.lxd/sfc_test",
-  "grid": "grid-1.json"
-
+  "grid_file": "grid-1.json",
+  "sps_file": "",
+  "rps_file": "",
+  "xps_file": "",
+  "verbose": 1
 }
