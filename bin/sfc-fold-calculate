@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+""" calculates fold and writes to csv """
+import sys
+import time
+from sfc_app import usage, fold_calculate, timer
+
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
+        usage('project_file output_fold_csv_file')
+        sys.exit(0)
+    start = time.time()
+    fold_calculate(sys.argv[1], sys.argv[2])
+    print(sys.argv[0])
+    print(sys.argv[1])
+    print(sys.argv[2])
+    print(timer(start, time.time()))
