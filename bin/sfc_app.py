@@ -24,14 +24,22 @@ def db_table_create(prj_file: str):
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine)
-    fold.create_table()
+    try:
+        fold.create_table()
+        print('Table created.')
+    except Exception as e:
+        print(e)
 
 
 def db_table_delete(prj_file: str):
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine)
-    fold.delete_table()
+    try:
+        fold.delete_table()
+        print('Table deleted.')
+    except Exception as e:
+        print(e)
 
 
 def usage(text: str):

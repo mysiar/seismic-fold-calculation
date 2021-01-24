@@ -1,0 +1,9 @@
+{
+  "db_url": "sqlite:///tests/data/fold.sqlite",
+  "grid_file": "tests/data/Test.grid",
+  "sps_file": "tests/data/TestZipper1.S",
+  "rps_file": "tests/data/TestZipper1.R",
+  "xps_file": "tests/data/TestZipper1.X",
+  "verbose": 1,
+  "db_verbose": 0
+}

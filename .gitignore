@@ -139,5 +139,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-tests/data/fold.sqlite
+# test data
+tests/data/fold.sqlite*
 tests/data/*.csv
+tests/data/*.S
+tests/data/*.R
+tests/data/*.X

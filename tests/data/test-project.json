@@ -1,9 +1,0 @@
-{
-  "db_url": "sqlite:///tests/data/fold.sqlite",
-  "grid_file": "grid-1.json",
-  "sps_file": "",
-  "rps_file": "",
-  "xps_file": "",
-  "verbose": 1,
-  "db_verbose": 0
-}
