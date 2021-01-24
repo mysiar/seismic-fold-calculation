@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+""" creates 'bins' table in db"""
 import sys
 
 from sfc_app import usage, db_table_create
@@ -7,5 +7,5 @@ from sfc_app import usage, db_table_create
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         usage('project_file')
-        exit(0)
+        sys.exit(0)
     db_table_create(sys.argv[1])

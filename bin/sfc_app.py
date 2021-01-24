@@ -1,3 +1,4 @@
+"""main file for all commands"""
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.event import listen
@@ -21,6 +22,7 @@ SPATIALITE_EXT = '/usr/lib/x86_64-linux-gnu/mod_spatialite.so'
 
 
 def db_table_create(prj_file: str):
+    """sfc-db-table-create"""
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine)
@@ -32,6 +34,7 @@ def db_table_create(prj_file: str):
 
 
 def db_table_delete(prj_file: str):
+    """sfc-db-table-delete"""
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine)
@@ -43,10 +46,12 @@ def db_table_delete(prj_file: str):
 
 
 def usage(text: str):
+    """simple message display"""
     print('Params required: ' + text)
 
 
 def read_project_file(filename: str):
+    """reads JSON project file"""
     file = open(filename, "r")
     result = json.load(file)
     file.close()
@@ -54,6 +59,7 @@ def read_project_file(filename: str):
 
 
 def fold_calculate(prj_file: str, fold_csv_file: str):
+    """sfc-fold-calculate"""
     prj = read_project_file(prj_file)
     parser = Sps21Parser()
     grid = Grid()
@@ -73,6 +79,7 @@ def fold_calculate(prj_file: str, fold_csv_file: str):
 
 
 def fold_db_load(prj_file: str, fold_csv_file: str):
+    """sfc-db-fold-load"""
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine, verbose=bool(prj[VERBOSE]))
@@ -80,6 +87,7 @@ def fold_db_load(prj_file: str, fold_csv_file: str):
 
 
 def fold_db_update(prj_file: str, fold_csv_file: str):
+    """sfc-db-fold-update"""
     prj = read_project_file(prj_file)
     engine = _create_db_engine(db_url=prj[DB_URL], db_verbose=bool(prj[DB_VERBOSE]))
     fold = FoldDbGis(db_engine=engine, verbose=bool(prj[VERBOSE]))
@@ -87,23 +95,28 @@ def fold_db_update(prj_file: str, fold_csv_file: str):
 
 
 def _create_db_engine(db_url: str, db_verbose: bool):
+    """creates SQLAlchemy engine"""
     db_type = db_url.split(":")[0]
     if POSTGRES == db_type:
-        return create_engine(db_url, echo=db_verbose)
+        engine = create_engine(db_url, echo=db_verbose)
     elif SQLITE == db_type:
         engine = create_engine(db_url, echo=db_verbose)
         listen(engine, 'connect', _load_spatialite)
-        return engine
+
     else:
         raise Exception('Not supported/tested DB engine: {}'.format(db_type))
 
+    return engine
 
+# pylint: disable=unused-argument
 def _load_spatialite(dbapi_conn, connection_record):
+    """ loads spatialite extension"""
     dbapi_conn.enable_load_extension(True)
     dbapi_conn.load_extension(SPATIALITE_EXT)
 
 
 def timer(start, end):
+    """ timer """
     hours, rem = divmod(end - start, 3600)
     minutes, seconds = divmod(rem, 60)
     return "{:0>2}:{:0>2}:{:05.2f}".format(int(hours), int(minutes), seconds)
