@@ -1,5 +1,5 @@
-SeismicFold>=0.0.2
-SeismicFoldDbGis>=0.0.4
+SeismicFold>=0.1.0
+SeismicFoldDbGis>=0.1.0
 SQLAlchemy>=1.3.22
 GeoAlchemy2>=0.8.4
 FixedWidthTextParser>=0.3.4

@@ -1,5 +1,6 @@
 """main file for all commands"""
 import json
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.event import listen
 
@@ -28,9 +29,11 @@ def db_table_create(prj_file: str):
     fold = FoldDbGis(db_engine=engine)
     try:
         fold.create_table()
-        print('Table created.')
+        sys.stdout.write('Table created.' + '\n')
+        sys.stdout.flush()
     except Exception as e:
-        print(e)
+        sys.stdout.write(str(e) + '\n')
+        sys.stdout.flush()
 
 
 def db_table_delete(prj_file: str):
@@ -40,14 +43,16 @@ def db_table_delete(prj_file: str):
     fold = FoldDbGis(db_engine=engine)
     try:
         fold.delete_table()
-        print('Table deleted.')
+        sys.stdout.write('Table deleted.' + '\n')
+        sys.stdout.flush()
     except Exception as e:
-        print(e)
+        sys.stdout.write(str(e) + '\n')
+        sys.stdout.flush()
 
 
 def usage(text: str):
     """simple message display"""
-    print('Params required: ' + text)
+    sys.stdout.write('Params required: ' + text + '\n')
 
 
 def read_project_file(filename: str):
@@ -107,6 +112,7 @@ def _create_db_engine(db_url: str, db_verbose: bool):
         raise Exception('Not supported/tested DB engine: {}'.format(db_type))
 
     return engine
+
 
 # pylint: disable=unused-argument
 def _load_spatialite(dbapi_conn, connection_record):
